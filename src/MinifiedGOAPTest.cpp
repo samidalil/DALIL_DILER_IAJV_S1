@@ -2,6 +2,7 @@
 #include <vector>
 #include <unordered_map>
 #include <iostream>
+#include <algorithm>
 
 /* State Definition and Values */
 
@@ -71,6 +72,7 @@ GOAP initGOAP()
     goap.actionCosts.insert({ Action::MOVE_TO_PLAYER, 2 });
     goap.actionCosts.insert({ Action::ATTACK_PLAYER, 1 });
 
+
     goap.goal = Action::ATTACK_PLAYER;
 
     return goap;
@@ -78,8 +80,9 @@ GOAP initGOAP()
 
 std::vector<Action> reverseAstar(const std::vector<Action>& openNodes, std::vector<Action> actions)
 {
+
     Action lowestCostAction;
-    unsigned int lowestCost = UINT64_MAX;
+    unsigned int lowestCost = 1000;
 
     for (auto action : openNodes)
     {
@@ -106,9 +109,66 @@ std::vector<Action> reverseAstar(const std::vector<Action>& openNodes, std::vect
 
 std::vector<Action> plan(const GOAP& goap, const AgentState& ws)
 {
-    std::vector<Action> possibleActions = { Action::GET_WEAPON, Action::RELOAD, Action::MOVE_TO_PLAYER };
+    std::vector<Action> possibleActions = { Action::GET_WEAPON, Action::RELOAD, Action::MOVE_TO_PLAYER, Action::ATTACK_PLAYER };
     std::vector<Action> openNodes = { goap.goal };
 
+    int shortestPathCostSum;
+    std::unordered_map<Action, AgentState> selectedActionPreconditions;
+
+    for(auto act : openNodes) {
+        int costSum = 0;
+
+        //adding new possible actions
+        for (auto action: possibleActions) {
+            if (act != action)
+                openNodes.push_back(action);
+        }
+        if(possibleActions.empty())
+        {
+            std::cout << "Game design error in actions" << std::endl;
+        }
+
+        std::remove(openNodes.begin(), openNodes.end(), act);
+
+        Action selectedAction;
+        //evaluating each actions preconditions
+        for (auto action: openNodes) {
+            //check amount of preconditions
+            //selectedAction = action
+        }
+        //costSum += selectedAction.cost;
+
+        //Check if this path is longer
+        /*
+         * if(shortestPathCost < costSum)
+         * {
+         *      std::remove(openNodes.begin(), openNodes.end(), selectedAction);
+         *      continue;
+         * }
+        */
+
+
+        //add selected actions' preconditions to the current one
+
+        //check if any preconditions are left that are unmet by world/agent state
+        /*
+         * if(selectedActionPreconditions == 0)
+         * {
+         *
+         *      the path is complete
+         *      if(shortestPathCost > costSum)
+         *          shortestPathCost = costSum;
+         *      if(openNodes.empty()) //finished?
+         *          break;
+         *
+         *      //remove the selected action from openNodes?
+         * }
+         * */
+        //selectedActionPreconditions += selectedActions preconditions
+
+
+
+    }
     AgentState preconditions = goap.actionPreconditions.at(goap.goal);
 
     preconditions.values = (!(ws.values & preconditions.values) & preconditions.ignoreMask);
@@ -130,6 +190,7 @@ int main()
     std::vector<Action> actions = plan(goap, ws);
 
     std::cout << "Test" << std::endl;
+    std::cout << "COUCOU MON REUF";
 
     for (Action action : actions)
         std::cout << (int)action << std::endl;
