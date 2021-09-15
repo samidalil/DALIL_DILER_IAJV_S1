@@ -2,8 +2,8 @@
 
 #include "../Action.h"
 
-class WalkToAxe : public Action
+class PickUpAxe : public Action
 {
 public:
-	void applyEffect(World& w) const override;
+    void applyEffect(World& w, PreconditionMap& preconditions) const override;
 };

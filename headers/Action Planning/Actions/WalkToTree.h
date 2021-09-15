@@ -5,5 +5,6 @@
 class WalkToTree : public Action
 {
 public:
-	void applyEffect(World& w) const override;
+    void applyEffect(World& w, PreconditionMap& preconditions) const override;
+
 };
