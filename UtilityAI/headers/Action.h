@@ -2,27 +2,18 @@
 
 #include "states/AgentState.h"
 #include "states/WorldState.h"
-#include "Utils.h"
-
+#include <vector>
 
 class Action
 {
 
 public:
     int factor;
-    template <typename T>
-    virtual float Evaluate(T& resource, World& w) const;
-    virtual void Execute(Agent& a) const;
+    std::unordered_map<unsigned int, unsigned int > evaluations;
+    void addEvaluation(std::pair<unsigned int,unsigned int > eval);
 
-    template <typename T>
-    float Evalutate(std::vector<T&> resources, World& w) const
-    {
-        std::vector<float> vals;
-        for(resource : resources)
-        {
-            vals.push_back(Utils::linear(0, w.nbGoalPopulation, resource));
-        }
-        return Utils::average(vals);
-
-    }
+    float Evaluate() const;
+    virtual void Execute(Agent& a) const = 0;
+    //virtual float Evaluate(T& resource, World& w) const;
+    //virtual void Execute(Agent& a) const;
 };

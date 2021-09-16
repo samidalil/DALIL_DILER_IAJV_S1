@@ -82,8 +82,8 @@ std::vector<Action> reverseAstar(const std::vector<Action>& openNodes, std::vect
 {
 
     Action lowestCostAction;
-    unsigned int lowestCost = 1000;
-
+    unsigned int lowestCost = UINT32_MAX;
+    8
     for (auto action : openNodes)
     {
         if (false/* ws.values & goap.actionPreconditions.at(action).values > 0 */)
@@ -115,12 +115,12 @@ std::vector<Action> plan(const GOAP& goap, const AgentState& ws)
     int shortestPathCostSum;
     std::unordered_map<Action, AgentState> selectedActionPreconditions;
 
-    for(auto act : openNodes) {
+    while(!openNodes.empty()) {
         int costSum = 0;
 
         //adding new possible actions
         for (auto action: possibleActions) {
-            if (act != action)
+            if (currentAction != action)
                 openNodes.push_back(action);
         }
         if(possibleActions.empty())
