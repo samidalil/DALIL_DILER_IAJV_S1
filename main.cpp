@@ -1,20 +1,19 @@
-﻿#include <iostream>
-#include "headers/Action Planning/Planner.h"
-int main()
-{
-    Planner planner;
-    World w;
+#include <unordered_map>
 
-    planner.Init();
-    planner.Planning(w);
-	std::cout << "test" << std::endl;
-	return 0;
+#include "headers/Action.h"
+
+void checkPreconditionsFromGamestate()
+{
+
 }
 
-/*
-files :
-- action (precondition, cost, effect)
-- planner (path finding)
-- world(state?)
-- goal? 
-*/
+int main()
+{
+    std::unordered_map<Precondition,bool> preconditions;
+
+    for(auto precondition : preconditions)
+    {
+
+    }
+    return 0;
+}
