@@ -1,4 +1,4 @@
 #pragma once
 
-#include "ProduceCharacter.h"
+#include "ProduceResource.h"
 #include "ProduceWood.h"

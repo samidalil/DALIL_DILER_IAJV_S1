@@ -11,4 +11,4 @@ project ("UtilAI")
 
 add_executable( GOAP "src/MinifiedGOAPTest.cpp" )
 #UtilityAI
-add_executable( UtilAI "UtilityAI/main.cpp" "UtilityAI/headers/states/WorldState.h" "UtilityAI/src/states/WorldState.cpp" "UtilityAI/src/Action.cpp" "UtilityAI/headers/Action.h" "UtilityAI/headers/states/AgentState.h" "UtilityAI/src/states/WorldState.cpp" "UtilityAI/headers/actions/ProduceCharacter.h" "UtilityAI/src/actions/ProduceCharacter.cpp" "UtilityAI/headers/actions/ProduceWood.h" "UtilityAI/headers/actions/AllActions.h" )
+add_executable( UtilAI "UtilityAI/main.cpp" "UtilityAI/headers/states/WorldState.h" "UtilityAI/src/states/WorldState.cpp" "UtilityAI/src/Action.cpp" "UtilityAI/headers/Action.h" "UtilityAI/headers/states/AgentState.h" "UtilityAI/src/states/WorldState.cpp" "UtilityAI/headers/actions/ProduceResource.h" "UtilityAI/src/actions/ProduceCharacter.cpp" "UtilityAI/headers/actions/ProduceWood.h" "UtilityAI/headers/actions/AllActions.h" )

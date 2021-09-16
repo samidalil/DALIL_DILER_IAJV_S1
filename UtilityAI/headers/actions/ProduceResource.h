@@ -5,6 +5,7 @@
 class ProduceVillager : public Action
 {
 public:
-    float Evaluate(Agent& a, World& w) const override;
+    template <typename T>
+    float Evaluate(T& resource, World& w) const override;
     void Execute(Agent& a) const override;
 };
