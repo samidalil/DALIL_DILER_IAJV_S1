@@ -5,3 +5,7 @@ PlayerState::PlayerState(const std::unordered_map<Resource, unsigned int> &resou
     this->resources = resources;
     this->preconditions = preconditions;
 }
+
+void PlayerState::updatePreconditions() {
+
+}

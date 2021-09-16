@@ -1,19 +1,10 @@
 #include <unordered_map>
 
 #include "headers/Action.h"
-
-void checkPreconditionsFromGamestate()
-{
-
-}
+#include "headers/States/WorldState.h"
 
 int main()
 {
-    std::unordered_map<Precondition,bool> preconditions;
-
-    for(auto precondition : preconditions)
-    {
-
-    }
+    std::vector<Action*> actions;
     return 0;
 }
