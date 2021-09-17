@@ -4,6 +4,8 @@
 
 #include <unordered_map>
 #include <vector>
+#include <functional>
+
 class Action
 {
 public:
@@ -13,6 +15,7 @@ public:
     unsigned int nbPreconditions;
     std::vector<Action> childActions;
 public:
-    Action(std::string name, unsigned int cost, std::unordered_map<Precondition, bool> preconditions, std::vector<Action> childActions);
-    virtual void Effect() const = 0;
+    std::function<void()> effect;
+    Action(std::string name, unsigned int cost, std::unordered_map<Precondition, bool> preconditions, std::vector<Action> childActions,
+           std::function<void()> effect);
 };
