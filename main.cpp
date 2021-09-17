@@ -11,7 +11,7 @@ void print()
 {
     std::cout << "hello world";
 }
-
+//finds the child with the least amount of preconditions
 Action findBestRoute(Action currentAction, std::vector<Action> childs)
 {
     int minPreconditions = INT32_MAX;
@@ -28,6 +28,7 @@ Action findBestRoute(Action currentAction, std::vector<Action> childs)
     return selectedAction;
 }
 
+//finds the actinos that will affect the precondition of the current action
 std::vector<Action> findActionChilds(Action& action, std::vector<Action> newListAction)
 {
     std::vector<Action> childs;
@@ -48,17 +49,19 @@ std::vector<Action> findActionChilds(Action& action, std::vector<Action> newList
     }
     return childs;
 }
-
+/*Determines the action chosen by the recursive pathfinder*/
 Action createActionTree(const PlayerState& playerState, const Action& action, const std::vector<Action> actions, const unsigned int cost)
 {
     PlayerState newPlayerstate = playerState;
     //TODO calculate new state based on effect of action in parameter
     action.updateUnmetPreconditions(newPlayerstate);
 
+    //this is the final action for this path
     if(action.nbUnmetPreconditions == 0)
         return action;
     else if(cost > newPlayerstate.minCostAction)
     {
+        //if this is the case, we ignore this path
         return Action.empty();//TODO make empty action equivalent to NULL for action
     }
     else
@@ -96,8 +99,7 @@ Action determineAction(PlayerState& playerState, Action initialAction, const std
 int main()
 {
     WorldState worldState;
-    PlayerState singlePlayerState;
-    /*
+
     PlayerState initialState;
 
     std::vector<PlayerState> playerStates;
@@ -106,33 +108,45 @@ int main()
         PlayerState playerState = initialState;
         playerStates.push_back(playerState);
     }
-    */
+
     std::vector<Action*> actions;
     std::unordered_map<Precondition,bool> preconditions;
     std::vector<Precondition> test;
     preconditions.insert(std::pair<Precondition,bool>(Precondition::HAS_ENOUGH_VILLAGERS, true));
 
     std::vector<Action> actionVec;
-    //preconditions.find(Precondition::HAS_ENOUGH_VILLAGERS)->second = true;
-    Action goal("Win game", 0,preconditions, actionVec, {
-    }); //TODO do temporary function to assign or create namespace with effects
 
-    Action action1 = goal;
-    std::cout << action1;
-
-
+    //create each action. thsi should be done in some sort of init and not in the main.
     Action makeVillager("Make Villager", 5,preconditions, actionVec, print);
     Action makeLumberjack("Make Lumberjack", 6,preconditions, actionVec, print);
     Action makeHouse("Make House", 10,preconditions, actionVec, print);
     Action waitForATurn("Wait for a turn", 1,preconditions, actionVec, print);
-    //action2.effect();
 
     actions.push_back(&makeVillager);
     actions.push_back(&makeLumberjack);
     actions.push_back(&makeHouse);
     actions.push_back(&waitForATurn);
 
-    singlePlayerState.preconditions = Utils::determinePreconditions(singlePlayerState, worldState);
+    bool aPlayerHaswon;
+    PlayerState wonPlayer;
+    while(!aPlayerHaswon)
+    {
+        for(PlayerState player : playerStates)
+        {
+            player.preconditions = Utils::determinePreconditions(player, worldState);
+            //TODO call create action
+            // Action selecetdAction = createActionTree(player, Make_villager_action , actions, 0);
+            //selecetdAction.effect(); and print action done with effect applied
+            //if(gameState.villagers >= worldState.rules.goal)
+            //{
+            //  wonPlayer = player
+            // aPlayerHasWon = true;
+            //}
+            //print state of each player, would be an operator in Playerstate showing each resource
+
+        }
+    }
+    //std::cout << "Player "<< wonPlayer.name << " has won" << std::endl;
 
     return 0;
 }

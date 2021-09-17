@@ -21,9 +21,12 @@ public:
     std::function<void()> effect; //stored function passed in parameter which is the effect applied by that action
     Action(std::string name, unsigned int cost, std::unordered_map<Precondition, bool> preconditions, std::vector<Action> childActions,
            std::function<void()> effect);
+    //Checks based on state given in parameter the amount of preconditions that are not emt for this action
     void updateUnmetPreconditions(PlayerState& playerState);
 
+    //copy action
     Action& operator=(const Action& a);
 
+    //print action
     friend std::ostream& operator<<(std::ostream& os, const Action& a);
 };
