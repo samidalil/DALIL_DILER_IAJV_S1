@@ -7,12 +7,11 @@
 #include "headers/states/WorldState.h"
 #include "headers/states/AgentState.h"
 #include <time.h>
-
-
 int main()
 {
     srand (time(NULL));
 
+    //le jeu peut être jouer avec autant d'IA que souhaité
     int nbAgents = 5;
     std::vector<Agent> agents;
     std::vector<Action*> actions;
@@ -28,7 +27,6 @@ int main()
         {
             for(auto action : actions)
             {
-
                 action->addEvaluation(agent.resources.find(Resources::));
             }
             if(agent.resources.find(Resources::NB_VILLAGER)->second >= w.rules.find(Rules::GOAL)->second)

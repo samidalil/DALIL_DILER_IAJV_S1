@@ -6,7 +6,7 @@ void Action::addEvaluation(std::pair<Resources, Rules> pair) {
     evaluations.insert(pair);
 }*/
 
-void Action::addEvaluation(std::pair<unsigned int, unsigned int> pair) {
+void Action::addEvaluation(const std::pair<unsigned int, unsigned int> pair) {
     evaluations.insert(pair);
 }
 

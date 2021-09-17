@@ -1,5 +1,6 @@
 #pragma once
 
+//Enum de resources d'une IA
 enum class Resources : unsigned short int
 {
     FOOD,
@@ -8,7 +9,7 @@ enum class Resources : unsigned short int
     NB_LUMBERJACK,
     NB_HOUSES
 };
-
+//Enum des règles du jeu pour le WorldState
 enum class Rules : unsigned short int
 {
     GOAL,

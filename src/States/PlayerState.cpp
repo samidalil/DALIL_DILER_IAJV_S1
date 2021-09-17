@@ -6,6 +6,11 @@ PlayerState::PlayerState(const std::unordered_map<Resource, unsigned int> &resou
     this->preconditions = preconditions;
 }
 
-void PlayerState::updatePreconditions() {
 
+void PlayerState::updatePreconditions(std::pair<Precondition, unsigned int> condition) {
+    preconditions.find(condition.first)->second = condition.second;
+}
+
+void PlayerState::updateResources(std::pair<Resource, unsigned int> resource) {
+    resources.find(resource.first)->second = resource.second;
 }
