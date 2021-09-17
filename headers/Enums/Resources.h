@@ -1,5 +1,6 @@
 #pragma once
 
+//list all player resources
 enum class Resource : unsigned short int{
     FOOD,
     WOOD,

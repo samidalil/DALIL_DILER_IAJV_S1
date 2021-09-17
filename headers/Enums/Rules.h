@@ -1,5 +1,6 @@
 #pragma once
 
+//list rules for the worldState that do not change
 enum class Rules : unsigned short int
 {
     GOAL,
@@ -10,4 +11,6 @@ enum class Rules : unsigned short int
     //MAX_HOUSE
     LUMBERJACK_PROD_RATE,
     VILLAGER_PROD_RATE,
+    HOUSE_WOOD_COST,
+    HOUSE_CAPACITY
 };

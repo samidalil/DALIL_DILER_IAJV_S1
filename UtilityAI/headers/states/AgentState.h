@@ -3,6 +3,7 @@
 #include "../Resources.h"
 #include <unordered_map>
 
+//Class contenant la data de chacune des IA.
 class Agent
 {
 public:

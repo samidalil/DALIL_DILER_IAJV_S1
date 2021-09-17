@@ -2,6 +2,8 @@
 
 #include <unordered_map>
 #include "../Enums/Rules.h"
+
+//contains static rules of the world with their values which does not change
 class WorldState
 {
 public:
